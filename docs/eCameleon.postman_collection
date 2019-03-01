@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "1d9800e6-4fd8-40f6-8b2e-8e61b6aad041",
+		"name": "eCameleonVue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Article Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/queries/article/{\"_id\":\"5afef4ea8876c41fec3a9722\"}/{\"title\":0}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"queries",
+						"article",
+						"{\"_id\":\"5afef4ea8876c41fec3a9722\"}",
+						"{\"title\":0}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"activity\": {\n    \"createdDate\": \"2018-03-23T16:32:27.424Z\",\n    \"name\": \"Razvan predescu\",\n    \"address\": \"65 Parklands Court\",\n    \"city\": \"Dublin\",\n    \"country\": \"Ireland\"\n}\n}"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/queries/article/{\"_id\":\"5b0b155fdd3b8d1c78e47d60\"}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"queries",
+						"article",
+						"{\"_id\":\"5b0b155fdd3b8d1c78e47d60\"}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Hello World!\",\n    \"post\": \"This is my first post. Hello World!\",\n    \"postedBy\": \"5ad61e41e9dd640e8025548b\",\n    \"comments\": [{\n        \"text\": \"Nice post!\",\n        \"postedBy\": \"5ad623c9b95ced11882d337b\"\n    }, {\n        \"text\": \"Thanks :)\",\n        \"postedBy\": \"5ad61e41e9dd640e8025548b\"\n    }]\n}"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/queries/article",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"queries",
+						"article"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article Put",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"$set\": { \"post\" : \"This is an update to my first post. Hello World!\" } }"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/queries/article/{\"_id\": \"5afef4ea8876c41fec3a9722\"}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"queries",
+						"article",
+						"{\"_id\": \"5afef4ea8876c41fec3a9722\"}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Article Comment Put",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"$set\": { \"comments.$.text\" : \"Nice post, Laura.\" } }"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/queries/article/{\"_id\": \"5ad1c4986c905c2728b678b8\", \"comments._id\": \"5ad383e6e33abe1c489c4500\"}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"queries",
+						"article",
+						"{\"_id\": \"5ad1c4986c905c2728b678b8\", \"comments._id\": \"5ad383e6e33abe1c489c4500\"}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"rzvdaniel@gmail.com\",\n\t\"fullName\": \"Daniel Predescu\",\n    \"active\": \"true\"\n}\n"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/user",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Put",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullName\": \"Razvan Predescu 2\"\n}"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/user/{\"_id\": \"5c7967baee4be713d8b8d0a9\"}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"user",
+						"{\"_id\": \"5c7967baee4be713d8b8d0a9\"}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/user/{\"_id\":\"5c7967baee4be713d8b8d0a9\"}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"user",
+						"{\"_id\":\"5c7967baee4be713d8b8d0a9\"}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/user/{\"_id\":\"5aff00cd4ee7a724d8138851\"}/{\"title\":0}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"user",
+						"{\"_id\":\"5aff00cd4ee7a724d8138851\"}",
+						"{\"title\":0}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/user/{}/{}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"user",
+						"{}",
+						"{}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "app",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/upload",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test02\",\n\t\"title\": \"Test 02\",\n    \"active\": \"true\"\n}\n"
+				},
+				"url": {
+					"raw": "{{eCameleon}}/app/app",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"app",
+						"app"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "App Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/app/app/{\"_id\":\"5c795b0c0e517f34183ed96e\"}/{\"name\":0}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"app",
+						"app",
+						"{\"_id\":\"5c795b0c0e517f34183ed96e\"}",
+						"{\"name\":0}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apps Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{eCameleon}}/api/app/app/{}/{}",
+					"host": [
+						"{{eCameleon}}"
+					],
+					"path": [
+						"api",
+						"app",
+						"app",
+						"{}",
+						"{}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
