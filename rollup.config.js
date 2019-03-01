@@ -6,10 +6,12 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
+import copyTo from 'rollup-plugin-copy-assets-to';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+const buildFolder = dev ? 'dev' : 'build';
 
 export default {
 	client: {
@@ -64,7 +66,13 @@ export default {
 				dev
 			}),
 			resolve(),
-			commonjs()
+			commonjs(),
+			copyTo({
+				assets: [
+					'./src/server/plugins'
+				],
+				outputDir: `__sapper__/${buildFolder}/server`
+			}),
 		],
 		external: Object.keys(pkg.dependencies).concat(
 			require('module').builtinModules || Object.keys(process.binding('natives'))
