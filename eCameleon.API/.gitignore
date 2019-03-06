@@ -29,7 +29,7 @@ bower_components
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
+# Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
@@ -57,53 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# ignore server configuration
-**/env/development.js
-docker-compose.local.yml
-#*.azcli
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-/server/www
-!/server/index.html
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-# System Files
-.DS_Store
-Thumbs.db
-
-# Sapper
-cypress/screenshots/
-__sapper__/
+# next.js build output
+.next
