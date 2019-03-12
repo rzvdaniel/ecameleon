@@ -5,7 +5,7 @@ services:
   api:
     build:
       context: .
-    image: eCameleon.API
+    image: eCameleon.Service.Template
     env_file: docker-compose.env
     environment:
       SERVICES: api
@@ -17,13 +17,13 @@ services:
       - "traefik.frontend.entryPoints=http"
       - "traefik.frontend.rule=PathPrefix:/"
 
-  tests:
+  template:
     build:
       context: .
-    image: eCameleon.API
+    image: eCameleon.Service.Template
     env_file: docker-compose.env
     environment:
-      SERVICES: tests
+      SERVICES: template
 
 
   traefik:
