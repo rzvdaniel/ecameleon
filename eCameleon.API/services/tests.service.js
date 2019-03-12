@@ -1,11 +1,11 @@
-// posts.service.js
+// tests.service.js
 module.exports = {
-	name: "posts",
-	//version: 2,
+	name: "tests",
+	version: 2,
 
 	settings: {
 		// Base path
-		rest: "posts/"
+		rest: "tests/"
 	},
 
 	actions: {
@@ -22,7 +22,7 @@ module.exports = {
 			// },
 
 			list: {
-					// Expose as "/v2/posts/"
+					// Expose as "/v2/tests/"
 					rest: "GET /",
 					// 	type ActionVisibility = "published" | "public" | "protected" | "private"
 					//visibility: 'published',
@@ -32,7 +32,7 @@ module.exports = {
 			},
 
 			get: {
-					// Expose as "/v2/posts/:id"
+					// Expose as "/v2/tests/:id"
 					rest: "GET /:id",
 					handler(ctx) {
 						return 'get';
