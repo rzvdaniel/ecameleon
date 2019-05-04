@@ -21,11 +21,11 @@
     "eslint": "^5.10.0",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
-    "moleculer-repl": "^0.5.6"
+    "moleculer-repl": "^0.5.7"
   },
   "dependencies": {
     "fakerator": "^0.3.0",
-    "moleculer": "^0.13.0-rc1",
+    "moleculer": "^0.13.9",
     "moleculer-web": "^0.9.0-beta2"
   },
   "engines": {
