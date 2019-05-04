@@ -2,18 +2,18 @@
 
 ## Roadmap v 0.1.0
 
-- eCameleon.UI infrastructure
-- eCameleon.API infrastructure
+- eCameleon.UI
+- eCameleon.API
 - eCameleon.App.Template
 - eCameleon.Service.Template
-- Protect the API
-- Protect the UI
+- eCameleon.Auth
 
 ## Roadmap v 0.2.0
 
 - Users and Roles
-- Admin section for UI & API
-- Import Apps & Microservices
+- Administration
+- Import Apps
+- Import Microservices
 
 ## Roadmap v 0.3.0
 
@@ -31,7 +31,7 @@
 
 - eCameleon Store
 - Import Apps from the Store
-- Buy & sell Apps
+- Buy & Sell Apps
 
 
 
