@@ -1,5 +1,5 @@
 <style>
-	h1, figure, p {
+	h1, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -9,16 +9,6 @@
 		text-transform: uppercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
 	}
 
 	p {
@@ -32,15 +22,26 @@
 	}
 </style>
 
+<script>
+	async function loadApp() {
+		const app = './Apps/App/main.js';
+		const { default: App } =  await import(app);
+		this.set({ App });
+	}
+</script>
+
 <svelte:head>
 	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h1>Apps list</h1>
 
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
+<ul>
+	<li><a href="#" on:click={loadApp}>App</a></li>
+</ul>
+
+<button on:click={loadApp}>
+	App
+</button>
 
 <p><strong>Try editing this file (routes/index.html) to test live reloading.</strong></p>
