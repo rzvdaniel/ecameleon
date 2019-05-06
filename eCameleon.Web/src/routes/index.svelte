@@ -1,3 +1,20 @@
+<svelte:head>
+	<title>Sapper project template</title>
+</svelte:head>
+
+<div id='container'>
+<h1>Apps list</h1>
+
+<ul>
+	<li><a href="#" on:click={loadApp}>App</a></li>
+</ul>
+
+<svelte:component this={App}/>
+
+<p><strong>Try editing this file (routes/index.html) to test live reloading.</strong></p>
+</div>
+
+
 <style>
 	h1, p {
 		text-align: center;
@@ -23,25 +40,11 @@
 </style>
 
 <script>
+	let App;
+
 	async function loadApp() {
 		const app = './Apps/App/main.js';
-		const { default: App } =  await import(app);
-		this.set({ App });
+		({ default: App } = await import(app));
 	}
 </script>
 
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-<h1>Apps list</h1>
-
-<ul>
-	<li><a href="#" on:click={loadApp}>App</a></li>
-</ul>
-
-<button on:click={loadApp}>
-	App
-</button>
-
-<p><strong>Try editing this file (routes/index.html) to test live reloading.</strong></p>
