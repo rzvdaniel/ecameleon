@@ -12,9 +12,6 @@ const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const appsTargetFolder = 'Apps';
-const appsOutputFolder = dev ? '__sapper__/dev/client' : '__sapper__/build/client';
-
 export default {
 	client: {
 		input: config.client.input(),
@@ -55,9 +52,10 @@ export default {
 
 			// https://github.com/vladshcherbin/rollup-plugin-copy
 			copy({
-				targets: appsTargetFolder,
-				outputFolder: appsOutputFolder
-			  })
+				targets: ['Apps'],
+				outputFolder: dev ? '__sapper__/dev/client' : '__sapper__/build/client',
+				verbose: true
+			})
 		],
 	},
 
