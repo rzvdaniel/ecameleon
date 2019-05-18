@@ -47,8 +47,17 @@ var main = (function () {
 		return document.createElement(name);
 	}
 
+	function text(data) {
+		return document.createTextNode(data);
+	}
+
 	function children(element) {
 		return Array.from(element.childNodes);
+	}
+
+	function set_data(text, data) {
+		data = '' + data;
+		if (text.data !== data) text.data = data;
 	}
 
 	let current_component;
@@ -269,20 +278,22 @@ var main = (function () {
 
 	function add_css() {
 		var style = element("style");
-		style.id = 'svelte-1r3uwkx-style';
-		style.textContent = "h2.svelte-1r3uwkx{color:green}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQXBwLnN2ZWx0ZSIsInNvdXJjZXMiOlsiQXBwLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c3R5bGU+XG5cdGgyIHtcblx0ICBjb2xvcjogZ3JlZW47XG5cdH1cbjwvc3R5bGU+XG5cbjxoMj5IZWxsbyBDaGF0Ym94PC9oMj4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0MsRUFBRSxlQUFDLENBQUMsQUFDRixLQUFLLENBQUUsS0FBSyxBQUNkLENBQUMifQ== */";
+		style.id = 'svelte-jy52c9-style';
+		style.textContent = "h1.svelte-jy52c9{color:red}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQXBwLnN2ZWx0ZSIsInNvdXJjZXMiOlsiQXBwLnN2ZWx0ZSJdLCJzb3VyY2VzQ29udGVudCI6WyI8c2NyaXB0PlxyXG5cdGV4cG9ydCBsZXQgbmFtZTtcclxuPC9zY3JpcHQ+XHJcblxyXG48c3R5bGU+XHJcblx0aDEge1xyXG5cdFx0Y29sb3I6IHJlZDtcclxuXHR9XHJcbjwvc3R5bGU+XHJcblxyXG48aDE+SGVsbG8ge25hbWV9ITwvaDE+XHJcbiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFLQyxFQUFFLGNBQUMsQ0FBQyxBQUNILEtBQUssQ0FBRSxHQUFHLEFBQ1gsQ0FBQyJ9 */";
 		append(document.head, style);
 	}
 
 	function create_fragment(ctx) {
-		var h2;
+		var h1, t0, t1, t2;
 
 		return {
 			c: function create() {
-				h2 = element("h2");
-				h2.textContent = "Hello Chatbox";
-				h2.className = "svelte-1r3uwkx";
-				add_location(h2, file, 6, 0, 44);
+				h1 = element("h1");
+				t0 = text("Hello ");
+				t1 = text(ctx.name);
+				t2 = text("!");
+				h1.className = "svelte-jy52c9";
+				add_location(h1, file, 10, 0, 89);
 			},
 
 			l: function claim(nodes) {
@@ -290,31 +301,63 @@ var main = (function () {
 			},
 
 			m: function mount(target, anchor) {
-				insert(target, h2, anchor);
+				insert(target, h1, anchor);
+				append(h1, t0);
+				append(h1, t1);
+				append(h1, t2);
 			},
 
-			p: noop,
+			p: function update(changed, ctx) {
+				if (changed.name) {
+					set_data(t1, ctx.name);
+				}
+			},
+
 			i: noop,
 			o: noop,
 
 			d: function destroy(detaching) {
 				if (detaching) {
-					detach(h2);
+					detach(h1);
 				}
 			}
 		};
 	}
 
+	function instance($$self, $$props, $$invalidate) {
+		let { name } = $$props;
+
+		$$self.$set = $$props => {
+			if ('name' in $$props) $$invalidate('name', name = $$props.name);
+		};
+
+		return { name };
+	}
+
 	class App extends SvelteComponentDev {
 		constructor(options) {
 			super(options);
-			if (!document.getElementById("svelte-1r3uwkx-style")) add_css();
-			init(this, options, null, create_fragment, safe_not_equal, []);
+			if (!document.getElementById("svelte-jy52c9-style")) add_css();
+			init(this, options, instance, create_fragment, safe_not_equal, ["name"]);
+
+			const { ctx } = this.$$;
+			const props = options.props || {};
+			if (ctx.name === undefined && !('name' in props)) {
+				console.warn("<App> was created without expected prop 'name'");
+			}
+		}
+
+		get name() {
+			throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+		}
+
+		set name(value) {
+			throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 		}
 	}
 
 	const app = new App({
-		target: document.querySelector('#AppHost'),
+		target: document.body,// document.querySelector('#AppHost'),
 		props: {
 			name: 'world'
 		}

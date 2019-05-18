@@ -4,7 +4,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import copy from 'rollup-plugin-copy'
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 
@@ -48,13 +47,6 @@ export default {
 
 			!dev && terser({
 				module: true
-			}),
-
-			// https://github.com/vladshcherbin/rollup-plugin-copy
-			copy({
-				targets: ['Apps'],
-				outputFolder: dev ? '__sapper__/dev/client' : '__sapper__/build/client',
-				verbose: true
 			})
 		],
 	},
