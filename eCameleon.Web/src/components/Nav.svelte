@@ -53,5 +53,7 @@
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
 		<li><a class='{segment === "apps" ? "selected" : ""}' href='apps'>apps</a></li>
 		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
+		<li><a class='{segment === "logout" ? "selected" : ""}' href='logout'>logout</a></li>
 	</ul>
 </nav>
+

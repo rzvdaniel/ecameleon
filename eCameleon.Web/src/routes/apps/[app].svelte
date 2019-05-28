@@ -25,6 +25,7 @@
 {#await loading_component}
 	<strong>Loading...</strong>
 {:then module}
+<!-- Don't forget to pass the app params like "root" -->
 	<svelte:component this="{module.default}" root={app}/>
 {:catch err}
 	<strong>Ops! Something went wrong: {err}</strong>
