@@ -1,19 +1,11 @@
-<svelte:head>
-	<title>Logout</title>
-</svelte:head>
-
-<script context="module">
-    export async function preload(page, session) {
-		await logout();
-    }
-</script>
-
 <script>
 	import { auth } from '../library/stores.js';
-	import { goto } from '@sapper/app';
+	import { goto, stores } from '@sapper/app';
+	
+	const { session } = stores();
 
-	async function logout() {	
-		await auth.logout();
-		goto('/login');
-	}
+	auth.logout();
+	$session.user = null;
+	goto('/login');
+	
 </script>

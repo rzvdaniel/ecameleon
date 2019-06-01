@@ -30,12 +30,10 @@
         const response = await auth.login({ username, password });
         if (response.email === username) {
             $session.user = response;
-
             goto('/');
         }
         else {
             error = response.message;
-            console.log(error);
         }
     }
 </script>

@@ -107,3 +107,6 @@ Thumbs.db
 # Sapper
 cypress/screenshots/
 __sapper__/
+
+# Sessions
+.sessions

@@ -20,10 +20,12 @@ function protect(req, res, next) {
 
     const allowed = [
         '/login',
+        '/logout',
         '/reset',
+        '/register',
         '/auth/login',
         '/auth/register',
-        '/register'
+        '/auth/logout'
     ];
 
     const isPrivate = !allowed.includes(req.path);

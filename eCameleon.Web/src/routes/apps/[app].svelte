@@ -1,8 +1,19 @@
 <script context="module">
-	export function preload({ params }) {
-		return params;
-	}
+	import { goto } from '@sapper/app';
+
+    export function preload(page, session) {
+
+		const { user } = session;
+		
+		if (!user) {
+			return this.redirect(302, 'login');
+		}
+
+		const { app } = page.params;
+		return { app }
+    }
 </script>
+
 
 <script>
 	export let app

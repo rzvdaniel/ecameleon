@@ -31,7 +31,6 @@ export function post(req, res) {
             }
         })
         .catch(response => {
-
             res.send = send.bind(res, response.status);
             res.end(response);
         });
