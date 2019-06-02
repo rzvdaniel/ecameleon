@@ -1,11 +1,15 @@
-// tests.service.js
+const DbService = require("../mixins/db.mixin");
+
 module.exports = {
-	name: "tests",
-	version: 2,
+	name: "apps",
+	version: 1,
+
+	mixins: [
+		DbService("apps"),
+	],
 
 	settings: {
-		// Base path
-		rest: "tests/"
+		rest: "apps/"
 	},
 
 	actions: {
@@ -22,7 +26,7 @@ module.exports = {
 			// },
 
 			list: {
-					// Expose as "/v2/tests/"
+					// Expose as "/v1/apps/"
 					rest: "GET /",
 					// 	type ActionVisibility = "published" | "public" | "protected" | "private"
 					//visibility: 'published',
