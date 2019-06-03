@@ -6,7 +6,7 @@ module.exports = {
 	actions: {
 
 		// example: {
-		// 	// Expose as "/v2/tests/:id"
+		// 	// Expose as "/v2/greeter/:id"
 		// 	rest: "GET /:id",
 		// 	// 	type ActionVisibility = "published" | "public" | "protected" | "private"
 		// 	visibility: 'published',
@@ -27,7 +27,7 @@ module.exports = {
 		},
 
 		list: {
-			// Expose as "/v2/tests/"
+			// Expose as "/v2/greeter/"
 			rest: "GET /",
 			handler(ctx) {
 				return 'list';
@@ -35,7 +35,7 @@ module.exports = {
 		},
 
 		get: {
-			// Expose as "/v2/tests/:id"
+			// Expose as "/v2/greeter/:id"
 			rest: "GET /:id",
 			handler(ctx) {
 				return 'get';
@@ -43,7 +43,7 @@ module.exports = {
 		},
 
 		create: {
-			// Expose as "/v2/tests/"
+			// Expose as "/v2/greeter/"
 			rest: "POST /",
 			handler(ctx) {
 				return 'create';
@@ -51,7 +51,7 @@ module.exports = {
 		},
 
 		update: {
-			// Expose as "/v2/tests/:id"
+			// Expose as "/v2/greeter/:id"
 			rest: "PUT /:id",
 			handler(ctx) {
 				return 'update';
@@ -59,7 +59,7 @@ module.exports = {
 		},
 
 		remove: {
-			// Expose as "/v2/tests/:id"
+			// Expose as "/v2/greeter/:id"
 			rest: "DELETE /:id",
 			handler(ctx) {
 				return 'remove';
