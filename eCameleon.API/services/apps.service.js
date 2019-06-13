@@ -9,59 +9,67 @@ module.exports = {
 	],
 
 	settings: {
-		rest: "apps/"
+		fields: {
+			id: { type: "string", readonly: true, primaryKey: true, secure: true, columnName: "_id" },
+			name: { type: "string", maxlength: 250, required: true },
+			description: { type: "string", maxlength: 5000, required: true },
+			active: { type: "boolean", default: true },
+			protected: { type: "boolean", default: true },
+			createdAt: { type: "number", updateable: false, default: Date.now },
+			updatedAt: { type: "number", readonly: true, updateDefault: Date.now }
+		}
 	},
 
 	actions: {
 
-			hello: {
-				rest: "GET /hello",
-				handler(ctx) {
-					return "Hello World";
-				}
+		list: {
+			rest: "GET /",
+			handler(ctx) {
+				return 'list';
+			}
+		},
+
+		get: {
+			rest: "GET /:id",
+			handler(ctx) {
+				return 'get';
+			}
+		},
+
+		create: {
+			rest: "POST /",
+			params: {
+				name: { type: "string", maxlength: 250 },
+				description: { type: "string", maxlength: 5000, optional: true }
 			},
+			async handler(ctx) {
+				const entity = {
+					name:  ctx.params.name,
+					description: ctx.params.description,
+					active : true,
+					protected: true,
+					createdAt: Date.now(),
+					updatedAt: Date.now()
+				};
 
-			// hello() {
-			// 	return "Hello Moleculer";
-			// },
+				const app = await this.adapter.insert(entity);
 
-			list: {
-					// Expose as "/v1/apps/"
-					rest: "GET /",
-					// 	type ActionVisibility = "published" | "public" | "protected" | "private"
-					//visibility: 'published',
-					handler(ctx) {
-						return 'list';
-					},
-			},
+				return this.transformDocuments(ctx, {}, app);
+			}
+		},
 
-			get: {
-					// Expose as "/v2/tests/:id"
-					rest: "GET /:id",
-					handler(ctx) {
-						return 'get';
-					}
-			},
+		update: {
+			rest: "PUT /:id",
+			handler(ctx) {
+				return 'update';
+			}
+		},
 
-			create: {
-					rest: "POST /",
-					handler(ctx) {
-						return 'create';
-					}
-			},
-
-			update: {
-					rest: "PUT /:id",
-					handler(ctx) {
-						return 'update';
-					}
-			},
-
-			remove: {
-					rest: "DELETE /:id",
-					handler(ctx) {
-						return 'remove';
-					}
-			},	
+		remove: {
+			rest: "DELETE /:id",
+			handler(ctx) {
+				return 'remove';
+			}
+		}
 	}
 };
