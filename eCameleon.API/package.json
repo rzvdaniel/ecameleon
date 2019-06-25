@@ -18,17 +18,17 @@
   ],
   "author": "",
   "devDependencies": {
-    "eslint": "^5.10.0",
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
     "moleculer-repl": "^0.5.7"
   },
   "dependencies": {
-    "fakerator": "^0.3.0",
     "bcrypt": "^3.0.5",
-    "cookie": "^0.3.1",
+    "cookie": "^0.4.0",
     "crypto": "^1.0.1",
-    "dotenv": "^7.0.0",
+    "dotenv": "^8.0.0",
+    "fakerator": "^0.3.0",
     "handlebars": "^4.1.2",
     "helmet": "^3.16.0",
     "jsonwebtoken": "^8.5.1",
@@ -43,7 +43,7 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-twitter": "^1.0.4",
-    "pug": "^2.0.3",
+    "pug": "^2.0.4",
     "speakeasy": "^2.0.0"
   },
   "engines": {
