@@ -149,6 +149,18 @@ module.exports = {
 		// Do not log client side errors (does not log an error respons when the error.code is 400<=X<500)
 		log4XXResponses: false,
 	},
+
+	actions: {
+        health(ctx) {
+            if (this.broker.ready && this.broker.transit.connected) {
+                return {
+                    state: "UP"
+                }
+            }
+
+            throw new MoleculerError("Node is down", 503);
+        }
+    },
 		
 	methods: {
 
