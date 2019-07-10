@@ -26,19 +26,10 @@ module.exports = {
 	settings: {
 		defaultConfig: {
 			"site.name": process.env.SITE_NAME,
-			"site.url": process.env.NOW_URL || "http://localhost:4000",
+			"site.url": process.env.NOW_URL,
 
 			"mail.enabled": process.env.MAIL_ENABLED,
-			"mail.from": process.env.MAIL_NOREPLY,
-
-			"accounts.signup.enabled": process.env.ACCOUNTS_SIGNUP_ENABLED,
-			"accounts.username.enabled": process.env.ACCOUNTS_USERNAME_ENABLED,
-			"accounts.passwordless.enabled": process.env.ACCOUNTS_PASSWORDLESS_ENABLED,
-			"accounts.verification.enabled": process.env.ACCOUNTS_VERIFICATION_ENABLED,
-			"accounts.defaultRoles": [process.env.ACCOUNTS_DEFAULT_ROLE],
-			"accounts.defaultPlan": process.env.ACCOUNTS_DEFAULT_PLAN,
-			"accounts.jwt.expiresIn": process.env.ACCOUNTS_JWT_EXPIRESIN,
-			"accounts.two-factor.enabled": process.env.ACCOUNTS_TWOFACTOR_ENABLED
+			"mail.from": process.env.MAIL_NOREPLY
 		},
 
 		// Fields in responses

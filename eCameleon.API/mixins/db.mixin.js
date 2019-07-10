@@ -42,13 +42,13 @@ module.exports = function(collection, opts = {}) {
 		},
 
 		async afterConnected() {
-			const dbAdapterConfig = process.env.DB_ADAPTER;
-			const testing = dbAdapterConfig === 'memory';
+			const dbAdapter = process.env.DB_ADAPTER;
+			const dbHasIndexes = dbAdapter !== 'memory' && dbAdapter !== 'nedb';
 		
 			this.logger.info("Connected to database.");
 			
 			/* istanbul ignore next */
-			if (!testing) {
+			if (dbHasIndexes) {
 				// Create indexes
 				if (this.settings.indexes) {
 					try {
@@ -58,7 +58,7 @@ module.exports = function(collection, opts = {}) {
 						this.logger.error("Unable to create indexes.", err);
 					}
 				}
-			}
+			}	
 
 			if (process.env.TEST_E2E) {
 				// Clean collection
