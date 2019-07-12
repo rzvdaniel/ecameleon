@@ -46,9 +46,15 @@ module.exports = {
 
 				autoAliases: true,
 				
+				camelCaseNames: true,
+
 				aliases: {},
 
-				camelCaseNames: true,
+				// Route CORS settings
+				cors: {
+					origin: "*",
+					methods: ["GET", "OPTIONS", "POST", "PUT", "DELETE"],
+				},				
 
 				bodyParsers: {
 					json: { limit: "2MB" },
@@ -73,10 +79,6 @@ module.exports = {
 				},
 			},
 
-			/**
-			 * This route demonstrates a protected `/admin/greeter` path to access `greeter.*` & internal actions.
-			 * To access them, you need to login first & use the received token in header
-			 */
 			{
 				// Path prefix to this route
 				path: "/admin",
@@ -87,7 +89,7 @@ module.exports = {
 					urlencoded: { extended: true }
 				},
 
-				//Route CORS settings
+				// Route CORS settings
 				cors: {
 					origin: "*",
 					methods: ["GET", "OPTIONS", "POST", "PUT", "DELETE"],
@@ -102,17 +104,10 @@ module.exports = {
 				authorization: true,
 
 				autoAliases: true,
-				
-				roles: [C.ROLE_SYSTEM],
 
-				//Action aliases
-				aliases: {
-					"health": "$node.health",
-					"custom"(req, res) {
-						res.writeHead(201);
-						res.end();
-					}
-				},
+				aliases: {},
+
+				//roles: [C.ROLE_SYSTEM],
 
 				onBeforeCall(ctx, route, req, res) {
 					this.logger.info("onBeforeCall in protected route");
