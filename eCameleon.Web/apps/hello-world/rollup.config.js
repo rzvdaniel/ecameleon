@@ -6,13 +6,21 @@ import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-cpy'
 
 const production = !process.env.ROLLUP_WATCH;
+
+// 1. If in production, we build the App.svelte component that would be injected into the parent application host
+// 2. If in development, we build the stand alone main.js entry which would be used inside stand alone index.html
 const inputFile = production ? 'src/App.svelte' : 'src/main.js';
+
+// 1. If in production, we build an EcmaScript bundle.mjs module
+// 2. If in development, we build a standard Javascript bundle.js
 const outputFile = production ? 'public/bundle.mjs' : 'public/bundle.js';
 
 export default {
 	input: inputFile,
 	output: {
 		sourcemap: true,
+		// In production, we build an EcmaScript module (ESM)
+		// In development, we build an Immediately Invoked Function Expression (IIFE)
 		format: production ? 'esm' : 'iife',
 		name: 'app',
 		file: outputFile
@@ -43,9 +51,12 @@ export default {
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
 		production && terser(),
-
+		
+		// TODO! Only copy at build time
 		copy({
+			// Copy EcmaScript modules and dependent resources from public folder
 			files: ['public/*.mjs', 'public/*.mjs.map', 'public/bundle.css', 'public/*.css.map'],
+			// To external folder static-apps from where the parent application host can load it
 			dest: '../../static-apps/hello-world',
 			options: {
 			  verbose: true
