@@ -11,11 +11,12 @@ export async function post(req, res) {
 
     try {
         const token = await api.post('api/v1/accounts/login', credentials);
-        const user = await api.post('api/v1/accounts/resolveToken', token);
-
         req.session.token = token.token;
+
+        const user = await api.post('api/v1/accounts/resolveToken', token);
         req.session.user = user;
 
+        res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(user));
     }
     catch(response) {
