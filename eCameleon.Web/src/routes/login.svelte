@@ -22,8 +22,8 @@
 
     const { session } = stores();
 
-    let username = 'rzvdaniel@gmail.com';
-    let password = '$Daniel1';
+    let username = '';
+    let password = '';
     let error = false;
 
     async function submit(event) {
