@@ -1,4 +1,4 @@
-const base = 'http://localhost:4001';
+import { config } from "../config"
 
 function query(params) {
 
@@ -23,7 +23,7 @@ async function send({ method, path, data, token }) {
 		opts.headers['Authorization'] = `Bearer ${token}`;
 	}
     
-    const req = await fetch(`${base}/${path}`, opts);
+    const req = await fetch(`${config.AUTH_URL}/${path}`, opts);
     const res = await req.text();
 
     try {
