@@ -39,7 +39,7 @@
 
 <script>
 
-    import * as api from '../library/api.js';
+    import { api } from '../library/api.js';
 	import { goto } from '@sapper/app';
     import Error from '../components/Error.svelte';
 

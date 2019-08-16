@@ -17,7 +17,7 @@
 <script>
 
 	import { goto, stores } from '@sapper/app';
-    import { auth } from '../library/stores.js';
+    import { api } from '../library/api.js';
     import Error from '../components/Error.svelte';
 
     const { session } = stores();
@@ -27,9 +27,17 @@
     let error = false;
 
     async function submit(event) {
-        const response = await auth.login({ username, password });
-        if (response.email === username) {
-            $session.user = response;
+
+        const credentials = {
+            email : username,
+            password : password
+        };
+
+        const user = await api.post('api/v1/login', credentials);
+
+        if (user.email === username) {
+            $session.user = user;
+            $session.token = user.token;
             goto('/');
         }
         else {

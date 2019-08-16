@@ -1,8 +1,8 @@
 <svelte:head><title>Sign up</title></svelte:head>
 
 <h1>Sign up</h1>
-
-<p><a href="/login">Have an account?</a></p>
+<!-- 
+<p><a href="/login">Have any account?</a></p>
 
 <Error {error} />
 
@@ -14,7 +14,7 @@
 
 <script>
     import { goto } from '@sapper/app';
-    import { auth } from '../library/stores.js';
+    import { auth } from '../library/auth.js';
     import Error from '../components/Error.svelte';
 
     export let formEl;
@@ -36,4 +36,4 @@
             goto('/login');
         }
     };
-</script>
+</script> -->
