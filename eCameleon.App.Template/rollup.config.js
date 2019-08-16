@@ -3,16 +3,27 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-cpy'
 
 const production = !process.env.ROLLUP_WATCH;
 
+// 1. If in production, we build the App.svelte component that would be injected into the parent application host
+// 2. If in development, we build the stand alone main.js entry which would be used inside stand alone index.html
+const inputFile = production ? 'src/App.svelte' : 'src/main.js';
+
+// 1. If in production, we build an EcmaScript bundle.mjs module
+// 2. If in development, we build a standard Javascript bundle.js
+const outputFile = production ? 'public/bundle.mjs' : 'public/bundle.js';
+
 export default {
-	input: 'src/main.js',
+	input: inputFile,
 	output: {
 		sourcemap: true,
-		format: 'iife',
-		name: 'main',
-		file: 'public/main.js'
+		// In production, we build an EcmaScript module (ESM)
+		// In development, we build an Immediately Invoked Function Expression (IIFE)
+		format: production ? 'esm' : 'iife',
+		name: 'app',
+		file: outputFile
 	},
 	plugins: [
 		svelte({
@@ -20,9 +31,9 @@ export default {
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
-			// css: css => {
-			// 	css.write('public/template.css');
-			// }
+			css: css => {
+				css.write('public/bundle.css');
+			}
 		}),
 
 		// If you have external dependencies installed from
@@ -39,6 +50,17 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		
+		// TODO! Only copy at build time
+		production && copy({
+			// Copy EcmaScript modules and dependent resources from public folder
+			files: ['public/*.mjs', 'public/*.mjs.map', 'public/bundle.css', 'public/*.css.map'],
+			// To external folder static-apps from where the parent application host can load it
+			dest: '../../static-apps/template-app',
+			options: {
+			  verbose: true
+			}
+		  })
 	]
 };
